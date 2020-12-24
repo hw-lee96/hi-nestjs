@@ -1,0 +1,10 @@
+{
+    "type" : "mariadb",
+    "host" : "host",
+    "port" : 9999,
+    "username" : "username",
+    "password" : "password",
+    "database" : "database",
+    "entities" : ["dist/**/**.entity{.ts,.js}"],
+    "synchronize" : true
+}
