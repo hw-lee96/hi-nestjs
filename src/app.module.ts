@@ -1,6 +1,9 @@
 import { Module } from '@nestjs/common';
 import { MoviesModule } from './movies/movies.module';
 import { AppController } from './app.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Connection } from 'typeorm';
+import { UsersModule } from './users/users.module';
 
 /* 데코레이터
   @Module
@@ -8,8 +11,10 @@ import { AppController } from './app.controller';
 
 */
 @Module({
-  imports: [MoviesModule],
+  imports: [MoviesModule, TypeOrmModule.forRoot({autoLoadEntities:true}), UsersModule],
   controllers: [AppController],
   providers: [],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private connection: Connection) {}
+}
