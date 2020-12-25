@@ -5,7 +5,7 @@ export class CreateUserDto {
     readonly user_id : string;
 
     @IsString()
-    readonly user_pw : string;
+    user_pw : string;
 
     @IsString()
     readonly user_nm : string;

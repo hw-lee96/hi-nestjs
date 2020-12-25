@@ -1,6 +1,8 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert } from "typeorm";
+import * as crypto from 'crypto';
 
-@Entity()
+@Entity('user')
 export class User {
     @PrimaryGeneratedColumn()
     user_no : number;
@@ -22,4 +24,9 @@ export class User {
 
     @Column({default:'y'})
     useyn : string;
+
+    @BeforeInsert()
+    async hashPassword() : Promise<void> {
+        this.user_pw = await crypto.createHash('sha512').update(this.user_pw).digest('base64');
+    }
 }
