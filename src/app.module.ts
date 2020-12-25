@@ -22,9 +22,10 @@ const config = new env.getter().getDev();
         username: config.username,
         password: config.password,
         database: config.database,
-        synchronize: true,
+        synchronize: false,
         entities : config.entities,
         autoLoadEntities: true,
+        logging : true
     }
     ), UsersModule],
     controllers: [AppController],
