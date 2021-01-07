@@ -25,6 +25,7 @@ export class User {
     @Column({default:'y'})
     useyn : string;
 
+    // @BeforeInsert()가 작동하지 않아서 일단 서비스에서 암호화 처리함
     @BeforeInsert()
     async hashPassword() : Promise<void> {
         this.user_pw = await crypto.createHash('sha512').update(this.user_pw).digest('base64');

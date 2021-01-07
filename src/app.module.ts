@@ -26,8 +26,8 @@ const config = new env.getter().getDev();
         entities : config.entities,
         autoLoadEntities: true,
         logging : true
-    }
-    ), UsersModule],
+    }),
+    UsersModule],
     controllers: [AppController],
     providers: [],
 })
